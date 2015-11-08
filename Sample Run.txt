@@ -1,0 +1,14 @@
+1 ?- interface('Stack2',Interface).
+Interface = [[public, 'String', gget, [void]], [public, void, reset, [void]], [public, void, push, ['String']], [public, 'String', pop, [void]]].
+
+2 ?- inheritance_chain('Stack2',Chain).
+Chain = ['ResettableBoundedStack', 'BoundedStack', 'Stack'].
+
+3 ?- provides_interface(Class,'Lockable',List).
+List = ['BoundedStack', 'ResettableBoundedStack', 'Stack2', 'Stack3'].
+
+4 ?- is_bloated('BoundedStack').
+false.
+
+5 ?- is_bloated('Stack3').
+true
